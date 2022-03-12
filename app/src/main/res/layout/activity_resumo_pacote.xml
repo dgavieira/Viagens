@@ -44,8 +44,12 @@
         android:id="@+id/resumo_pacote_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/resumo_pacote_dias"
+        app:layout_constraintEnd_toStartOf="@+id/resumo_pacote_preco_final"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resumo_pacote_dias"
         tools:text="08/12 -10/12 de 2017" />
 
@@ -54,19 +58,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/resumo_pacote_data"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/resumo_pacote_data"
         tools:text="R$ 243,99" />
 
     <TextView
         android:id="@+id/resumo_pacote_preco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/texto_preco_final"
+        android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/resumo_pacote_preco_final"
         app:layout_constraintEnd_toEndOf="@+id/resumo_pacote_preco_final"
         app:layout_constraintTop_toTopOf="@+id/resumo_pacote_imagem"

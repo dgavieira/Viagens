@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,12 +15,15 @@ import com.dgavieira.viagens.util.MoedaUtil;
 import com.dgavieira.viagens.util.ResourceUtil;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ResumoPacoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Resumo do Pacote");
         setContentView(R.layout.activity_resumo_pacote);
 
         Pacote pacoteSaoPaulo = new Pacote("São Paulo", "sao_paulo_sp",
@@ -36,9 +40,22 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         String diasEmTexto = DiasUtil.formataEmTexto(pacoteSaoPaulo.getDias());
         dias.setText(diasEmTexto);
 
-        TextView preco = findViewById(R.id.resumo_pacote_preco);
+        TextView preco = findViewById(R.id.resumo_pacote_preco_final);
         String moedaBrasileira = MoedaUtil.formataParaBrasileiro(pacoteSaoPaulo.getPreco());
         preco.setText(moedaBrasileira);
+
+        TextView data = findViewById(R.id.resumo_pacote_data);
+        Calendar dataIda = Calendar.getInstance();
+        Calendar dataVolta = Calendar.getInstance();
+        dataVolta.add(Calendar.DATE, pacoteSaoPaulo.getDias());
+        SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd/MM");
+        String dataFormatadaIda = formatoBrasileiro.format(dataIda.getTime());
+        String dataFormatadaVolta = formatoBrasileiro.format(dataVolta.getTime());
+        String dataFormatadaDaViagem = dataFormatadaIda + " - "
+                + dataFormatadaVolta + " de "
+                + dataVolta.get(Calendar.YEAR);
+        data.setText(dataFormatadaDaViagem);
+
 
     }
 }
